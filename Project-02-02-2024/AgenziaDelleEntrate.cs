@@ -67,14 +67,15 @@ namespace Project_02_02_2024
             Console.WriteLine($"Reddito Netto: {contribuente.RedditoAnnualeNetto}\n");
             Console.WriteLine($"IMPOSTA DA VERSARE: {contribuente.Imposta}");
             Console.WriteLine("===============================================\n");
-            restart();
+            Restart();
         }
 
         // restart Metodo per chiedere all'utente se vuole calcolare un altro reddito
-        public static void restart()
+        public static void Restart()
         {
             Console.WriteLine("Vuoi calcolare un altro reddito? y/n");
             string confermaYN = Console.ReadLine();
+
             if (confermaYN == "y")
             {
                 Contribuente contribuente = new Contribuente();
@@ -121,6 +122,7 @@ namespace Project_02_02_2024
         {
             Console.WriteLine("Inserisci il tuo sesso M o F: ");
             string sesso = Console.ReadLine().ToUpper();
+
             if (sesso == "M") return "Uomo";
             else if (sesso == "F") return "Donna";
             else

@@ -50,7 +50,7 @@ namespace Project_02_02_2024
         // in base al reddito annuale dichiarato dal contribuente 
         public static void CalcolaRedditoNetto(Contribuente contribuente)
         {
-            Console.WriteLine("Conferma per visualizzare il tuo reddito nerro y/n");
+            Console.WriteLine("Conferma per visualizzare il tuo reddito netto y/n");
             string calcolareRedditoNetto = Console.ReadLine().ToLower();
 
             if (calcolareRedditoNetto == "y") contribuente.CalcolaImposta();

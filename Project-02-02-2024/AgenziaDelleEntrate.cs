@@ -30,13 +30,11 @@ namespace Project_02_02_2024
             Console.WriteLine("Inserisci il tuo cognome: ");
             contribuente.Cognome = Console.ReadLine();
 
-            contribuente.DataNascita = CreateDate();
+            contribuente.DataNascita = ControlloDate();
 
-            Console.WriteLine("Inserisci il tuo codice fiscale: ");
-            contribuente.CodiceFiscale = Console.ReadLine();
+            contribuente.CodiceFiscale = ControlloCodiceFiscale();
 
-            Console.WriteLine("Inserisci il tuo sesso: ");
-            contribuente.Sesso = Console.ReadLine();
+            contribuente.Sesso = ControlloSesso();
 
             Console.WriteLine("Inserisci il tuo comune di residenza: ");
             contribuente.ComuneResidenza = Console.ReadLine();
@@ -47,26 +45,51 @@ namespace Project_02_02_2024
             CalcolaRedditoNetto(contribuente);
 
         }
+        // ControlloCodiceFiscale Metodo per controllare che il codice fiscale sia valido
+        public static string ControlloCodiceFiscale()
+        {
+            Console.WriteLine("Inserisci il tuo codice fiscale: ");
+            string codiceFiscale = Console.ReadLine().ToUpper();
+            if (codiceFiscale.Length == 16) return codiceFiscale;
+            else
+            {
+                Console.WriteLine("Errore: Il codice fiscale deve essere di 16 caratteri.");
+                return ControlloCodiceFiscale();
+            }
+        }
+
+
         // CreateDate Metodo per raccogliere la data di nascita del contribuente e controllare che sia valida
-        public static DateTime CreateDate()
+        public static DateTime ControlloDate()
         {
             DateTime convertedDate;
-            bool isValidDate;
 
-            do
+            Console.WriteLine("Inserisci la tua data di nascita: ");
+            string inputDate = Console.ReadLine();
+
+            // Controllo che la data sia nel formato corretto
+            if (DateTime.TryParseExact(inputDate, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out convertedDate))
+            { return convertedDate; }
+            else
             {
-                Console.WriteLine("Inserisci la tua data di nascita: ");
-                string inputDate = Console.ReadLine();
-                // Controllo che la data sia nel formato corretto
-                isValidDate = DateTime.TryParseExact(inputDate, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out convertedDate);
+                // Se la data non è nel formato corretto, chiedo all'utente di reinserirlo
+                Console.WriteLine("Errore: Inserisci la data nel formato corretto (dd/MM/yyyy).");
+                return ControlloDate();
+            }
 
-                if (isValidDate == false)
-                {
-                    Console.WriteLine("Errore: Formato data non valido. Inserisci una data nel formato dd/MM/yyyy.");
-                }
-            } while (isValidDate == false);
-
-            return convertedDate;
+        }
+        // ControlloSesso Metodo per controllare che il sesso sia valido
+        public static string ControlloSesso()
+        {
+            Console.WriteLine("Inserisci il tuo sesso: ");
+            string sesso = Console.ReadLine().ToUpper();
+            if (sesso == "M") return "Uomo";
+            else if (sesso == "F") return "Donna";
+            else
+            {
+                Console.WriteLine("Errore: Inserisci M o F.");
+                return ControlloSesso();
+            }
         }
 
         // CalcolaRedditoNetto Metodo per calcolare il reddito netto e l'imposta da versare 

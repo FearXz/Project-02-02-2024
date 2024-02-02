@@ -4,7 +4,7 @@ namespace Project_02_02_2024
 {
     internal static class AgenziaDelleEntrate
     {
-        // Menu Metodo per avviare il programma e chiedere all'utente se vuole calcolare il reddito
+        // Menu Metodo per avviare il programma e chiedere all'utente se vuole calcolare il reddito 
         public static void Menu()
         {
             Console.WriteLine("=======================================");
@@ -12,14 +12,15 @@ namespace Project_02_02_2024
             Console.WriteLine("=======================================\n");
             Console.WriteLine("* Benvenuto allo sportello, Vuoi calcolare il tuo reddito ? y/n");
 
-            string confermaYN = Console.ReadLine();
+            string confermaYN = Console.ReadLine().ToLower();
 
             if (confermaYN == "y")
             {
                 Contribuente contribuente = new Contribuente();
                 CompileFormData(contribuente);
             }
-            else { Console.WriteLine("Arrivederci, premi un tasto per chiudere lo sportello."); Console.ReadLine(); }
+            else if (confermaYN == "n") { Console.WriteLine("Arrivederci, premi un tasto per chiudere lo sportello."); Console.ReadLine(); }
+            else { Console.WriteLine("Errore: Inserisci y o n."); Menu(); }
         }
         // CompileFormData Metodo per raccogliere i dati del contribuente 
         public static void CompileFormData(Contribuente contribuente)
@@ -39,8 +40,7 @@ namespace Project_02_02_2024
             Console.WriteLine("Inserisci il tuo comune di residenza: ");
             contribuente.ComuneResidenza = Console.ReadLine();
 
-            Console.WriteLine("Inserisci il tuo reddito annuale: ");
-            contribuente.RedditoAnnuale = double.Parse(Console.ReadLine());
+            contribuente.RedditoAnnuale = ControlloReddito();
 
             CalcolaRedditoNetto(contribuente);
 
@@ -50,8 +50,8 @@ namespace Project_02_02_2024
         // in base al reddito annuale dichiarato dal contribuente 
         public static void CalcolaRedditoNetto(Contribuente contribuente)
         {
-            Console.WriteLine("Vorresti calcolare il tuo Reddito Netto? Y/n");
-            string calcolareRedditoNetto = Console.ReadLine();
+            Console.WriteLine("Conferma per visualizzare il tuo reddito nerro y/n");
+            string calcolareRedditoNetto = Console.ReadLine().ToLower();
 
             if (calcolareRedditoNetto == "y") contribuente.CalcolaImposta();
             else { Console.WriteLine("Arrivederci, premi un tasto per chiudere lo sportello."); Console.ReadLine(); }
@@ -61,6 +61,7 @@ namespace Project_02_02_2024
             Console.WriteLine("===============================================\n");
             Console.WriteLine($"Contribuente: {contribuente.Nome} {contribuente.Cognome}");
             Console.WriteLine($"Nato il: {contribuente.DataNascita.ToString("dd/MM/yyyy")}");
+            Console.WriteLine($"Sesso: {contribuente.Sesso}\n");
             Console.WriteLine($"Residente in: {contribuente.ComuneResidenza}");
             Console.WriteLine($"Codice Fiscale: {contribuente.CodiceFiscale}\n");
             Console.WriteLine($"Reddito Lordo Dichiarato: {contribuente.RedditoAnnuale}");
@@ -117,7 +118,7 @@ namespace Project_02_02_2024
             }
 
         }
-        // ControlloSesso Metodo per controllare che il sesso sia valido
+        // ControlloSesso Metodo per controllare che il sesso sia valido M o F
         public static string ControlloSesso()
         {
             Console.WriteLine("Inserisci il tuo sesso M o F: ");
@@ -129,6 +130,18 @@ namespace Project_02_02_2024
             {
                 Console.WriteLine("Errore: Inserisci M o F.");
                 return ControlloSesso();
+            }
+        }
+        // ControlloReddito Metodo per controllare che il reddito sia un valore numerico positivo
+        public static double ControlloReddito()
+        {
+            Console.WriteLine("Inserisci il tuo reddito annuale: ");
+            double reddito;
+            if (double.TryParse(Console.ReadLine(), out reddito) && reddito >= 0) return reddito;
+            else
+            {
+                Console.WriteLine("Errore: Inserisci un valore numerico positivo.");
+                return ControlloReddito();
             }
         }
     }

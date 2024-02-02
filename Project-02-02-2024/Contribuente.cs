@@ -5,32 +5,35 @@ namespace Project_02_02_2024
     internal class Contribuente
     {
         // Proprietà della classe Contribuente
-        private string nome;
-        public string Nome { get => nome; set => nome = value; }
+        private string _nome;
+        public string Nome { get => _nome; set => _nome = value; }
 
-        private string cognome;
-        public string Cognome { get => cognome; set => cognome = value; }
+        private string _cognome;
+        public string Cognome { get => _cognome; set => _cognome = value; }
 
-        private DateTime dataNascita;
-        public DateTime DataNascita { get => dataNascita; set => dataNascita = value; }
+        private DateTime _dataNascita;
+        public DateTime DataNascita { get => _dataNascita; set => _dataNascita = value; }
 
-        private string codiceFiscale;
-        public string CodiceFiscale { get => codiceFiscale; set => codiceFiscale = value; }
+        private string _codiceFiscale;
+        public string CodiceFiscale { get => _codiceFiscale; set => _codiceFiscale = value; }
 
-        private string sesso;
-        public string Sesso { get => sesso; set => sesso = value; }
+        private string _sesso;
+        public string Sesso { get => _sesso; set => _sesso = value; }
 
-        private string comuneResidenza;
-        public string ComuneResidenza { get => comuneResidenza; set => comuneResidenza = value; }
+        private string _comuneResidenza;
+        public string ComuneResidenza { get => _comuneResidenza; set => _comuneResidenza = value; }
 
-        private double redditoAnnuale;
-        public double RedditoAnnuale { get => redditoAnnuale; set => redditoAnnuale = value; }
+        private double _redditoAnnuale;
+        public double RedditoAnnuale { get => _redditoAnnuale; set => _redditoAnnuale = value; }
 
-        private double imposta;
-        public double Imposta { get => imposta; set => imposta = value; }
+        private double _imposta;
+        public double Imposta { get => _imposta; set => _imposta = value; }
 
-        private double redditoAnnualeNetto;
-        public double RedditoAnnualeNetto { get => redditoAnnualeNetto; set => redditoAnnualeNetto = value; }
+        private double _redditoAnnualeNetto;
+        public double RedditoAnnualeNetto { get => _redditoAnnualeNetto; set => _redditoAnnualeNetto = value; }
+
+        // Costruttore della classe Contribuente, potevo anche non metterlo perchè è di default ma l'ho messso perchè lo chiedeva l'esercizio
+        public Contribuente() { }
 
         // Metodo per calcolare l'aliquota in base al reddito annuale in base alla tabella delle aliquote
         public double CalcolaImposta()

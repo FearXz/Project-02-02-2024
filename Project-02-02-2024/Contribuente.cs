@@ -6,58 +6,31 @@ namespace Project_02_02_2024
     {
         // Proprietà della classe Contribuente
         private string nome;
-        public string Nome
-        {
-            get => nome; set => nome = value;
-        }
+        public string Nome { get => nome; set => nome = value; }
 
         private string cognome;
-        public string Cognome
-        {
-            get => cognome; set => cognome = value;
-        }
+        public string Cognome { get => cognome; set => cognome = value; }
 
         private DateTime dataNascita;
-        public DateTime DataNascita
-        {
-            get => dataNascita; set => dataNascita = value;
-        }
+        public DateTime DataNascita { get => dataNascita; set => dataNascita = value; }
 
         private string codiceFiscale;
-        public string CodiceFiscale
-        {
-            get => codiceFiscale; set => codiceFiscale = value;
-        }
+        public string CodiceFiscale { get => codiceFiscale; set => codiceFiscale = value; }
 
         private string sesso;
-        public string Sesso
-        {
-            get => sesso; set => sesso = value;
-        }
+        public string Sesso { get => sesso; set => sesso = value; }
 
         private string comuneResidenza;
-        public string ComuneResidenza
-        {
-            get => comuneResidenza; set => comuneResidenza = value;
-        }
+        public string ComuneResidenza { get => comuneResidenza; set => comuneResidenza = value; }
 
         private double redditoAnnuale;
-        public double RedditoAnnuale
-        {
-            get => redditoAnnuale; set => redditoAnnuale = value;
-        }
+        public double RedditoAnnuale { get => redditoAnnuale; set => redditoAnnuale = value; }
 
         private double imposta;
-        public double Imposta
-        {
-            get => imposta; set => imposta = value;
-        }
+        public double Imposta { get => imposta; set => imposta = value; }
 
         private double redditoAnnualeNetto;
-        public double RedditoAnnualeNetto
-        {
-            get => redditoAnnualeNetto; set => redditoAnnualeNetto = value;
-        }
+        public double RedditoAnnualeNetto { get => redditoAnnualeNetto; set => redditoAnnualeNetto = value; }
 
         // Metodo per calcolare l'aliquota in base al reddito annuale in base alla tabella delle aliquote
         public double CalcolaImposta()

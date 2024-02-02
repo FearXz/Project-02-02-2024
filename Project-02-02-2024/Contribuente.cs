@@ -60,7 +60,7 @@ namespace Project_02_02_2024
         }
 
         // Metodo per calcolare l'aliquota in base al reddito annuale
-        public double CalcolaAliquota()
+        public double CalcolaImposta()
         {
             switch (RedditoAnnuale)
             {

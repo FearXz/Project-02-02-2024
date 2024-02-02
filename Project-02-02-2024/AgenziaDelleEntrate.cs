@@ -44,7 +44,7 @@ namespace Project_02_02_2024
             Console.WriteLine("Inserisci il tuo reddito annuale: ");
             contribuente.RedditoAnnuale = double.Parse(Console.ReadLine());
 
-            contribuente.CalcolaAliquota();
+            contribuente.CalcolaImposta();
             CalcolaRedditoNetto(contribuente);
 
         }
@@ -58,7 +58,7 @@ namespace Project_02_02_2024
             {
                 Console.WriteLine("Inserisci la tua data di nascita: ");
                 string inputDate = Console.ReadLine();
-
+                // Controllo che la data sia nel formato corretto
                 isValidDate = DateTime.TryParseExact(inputDate, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out convertedDate);
 
                 if (isValidDate == false)
@@ -75,7 +75,7 @@ namespace Project_02_02_2024
         {
             Console.WriteLine("Vorresti calcolare il tuo Reddito Netto? Y/n");
             string calcolareRedditoNetto = Console.ReadLine();
-            if (calcolareRedditoNetto == "y") contribuente.CalcolaAliquota();
+            if (calcolareRedditoNetto == "y") contribuente.CalcolaImposta();
             else { Console.WriteLine("Arrivederci, premi un tasto per chiudere lo sportello."); Console.ReadLine(); }
             Console.WriteLine("===============================================");
             Console.WriteLine("C A L C O L O  I M P O S T A  D A  V E R S A R E");

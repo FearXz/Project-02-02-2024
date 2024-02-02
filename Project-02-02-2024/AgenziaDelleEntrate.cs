@@ -4,7 +4,7 @@ namespace Project_02_02_2024
 {
     internal static class AgenziaDelleEntrate
     {
-        // Metodo per avviare il programma e chiedere all'utente se vuole calcolare il reddito
+        // Menu Metodo per avviare il programma e chiedere all'utente se vuole calcolare il reddito
         public static void Menu()
         {
             Console.WriteLine("=======================================");
@@ -21,7 +21,7 @@ namespace Project_02_02_2024
             }
             else { Console.WriteLine("Arrivederci, premi un tasto per chiudere lo sportello."); Console.ReadLine(); }
         }
-        // Metodo per raccogliere i dati del contribuente e calcolare l'aliquota
+        // CompileFormData Metodo per raccogliere i dati del contribuente 
         public static void CompileFormData(Contribuente contribuente)
         {
             Console.WriteLine("Inserisci il tuo nome: ");
@@ -44,11 +44,10 @@ namespace Project_02_02_2024
             Console.WriteLine("Inserisci il tuo reddito annuale: ");
             contribuente.RedditoAnnuale = double.Parse(Console.ReadLine());
 
-            contribuente.CalcolaImposta();
             CalcolaRedditoNetto(contribuente);
 
         }
-        // Metodo per raccogliere la data di nascita del contribuente e controllare che sia valida
+        // CreateDate Metodo per raccogliere la data di nascita del contribuente e controllare che sia valida
         public static DateTime CreateDate()
         {
             DateTime convertedDate;
@@ -70,13 +69,16 @@ namespace Project_02_02_2024
             return convertedDate;
         }
 
-        // Metodo per calcolare il reddito netto e l'imposta da versare 
+        // CalcolaRedditoNetto Metodo per calcolare il reddito netto e l'imposta da versare 
+        // in base al reddito annuale dichiarato dal contribuente 
         public static void CalcolaRedditoNetto(Contribuente contribuente)
         {
             Console.WriteLine("Vorresti calcolare il tuo Reddito Netto? Y/n");
             string calcolareRedditoNetto = Console.ReadLine();
+
             if (calcolareRedditoNetto == "y") contribuente.CalcolaImposta();
             else { Console.WriteLine("Arrivederci, premi un tasto per chiudere lo sportello."); Console.ReadLine(); }
+
             Console.WriteLine("===============================================");
             Console.WriteLine("C A L C O L O  I M P O S T A  D A  V E R S A R E");
             Console.WriteLine("===============================================\n");
@@ -91,7 +93,7 @@ namespace Project_02_02_2024
             restart();
         }
 
-        // Metodo per chiedere all'utente se vuole calcolare un altro reddito
+        // restart Metodo per chiedere all'utente se vuole calcolare un altro reddito
         public static void restart()
         {
             Console.WriteLine("Vuoi calcolare un altro reddito? y/n");

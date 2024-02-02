@@ -59,7 +59,7 @@ namespace Project_02_02_2024
             get => redditoAnnualeNetto; set => redditoAnnualeNetto = value;
         }
 
-        // Metodo per calcolare l'aliquota in base al reddito annuale
+        // Metodo per calcolare l'aliquota in base al reddito annuale in base alla tabella delle aliquote
         public double CalcolaImposta()
         {
             switch (RedditoAnnuale)
